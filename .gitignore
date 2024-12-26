@@ -1,0 +1,21 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# terraform.tvars
+terraform.tfvars
+
+# MacOS junk
+.DS_Store
+
+# Terraform plan files
+*.tfplan
+
+# SSH keys
+*ed_25519*
+*id_rsa*
+
+*.json

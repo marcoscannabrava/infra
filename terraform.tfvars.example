@@ -1,0 +1,32 @@
+# Hetzner Cloud API token used to create infrastructure
+hcloud_token = ""
+
+# Hetzner location used for all resources - https://docs.hetzner.cloud/#locations
+hcloud_location = "fsn1"
+
+# Image to be used for all instances - https://docs.hetzner.cloud/#images
+hcloud_image = "ubuntu-22.04"
+
+# Type of instance to be used for all instances - https://docs.hetzner.cloud/#server-types
+hcloud_server = "cax11"
+
+# # Network to create for private communication
+# network_cidr = "10.0.0.0/8"
+
+# # Subnet to create for private communication. Must be part of the CIDR defined in `network_cidr`.
+# network_ip_range = "10.0.1.0/24"
+
+# # Zone to create the network in
+# network_zone = "us-west"
+
+# Cloudflare API token used to add DNS records
+cloudflare_token = ""
+
+# Cloudflare Zone ID
+cloudflare_zone_id = ""
+
+# Domain URL to point server to
+domain = "example.com"
+
+# Prefix added to names of all resources
+prefix = "example"
