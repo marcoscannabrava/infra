@@ -10,19 +10,21 @@ It spins up one Hetzner Cloud box running Ubuntu, installs Docker, configures it
 
 # Quickstart
 
-1. Requorements:
+1. Requirements:
    1. [Install Terraform](#requirements-installation)
    2. Hetzner Account, and API Token
    3. Cloudflare Account, Zone, and API Token (a domain is required)
 2. Set up Environment Variables: `terraform.tfvars.example` --> `terraform.tfvars` (see `variables.tf` for a description of each)
 3. Run and check output: `terraform init && terraform plan`
 4. Run: `terraform apply`
-5. Run: `ssh [prefix]` (`prefix` variable set in terraform.tfvars) to connect to the Hetzner box
-6. Run: `echo -e "HTTP/1.1 200 OK\r\nContent-Length: 11\r\n\r\nhello world" | sudo nc -l -p 80` in the box to see "hello world" when accessing your domain from a browser
+5. Run (local): `ssh [prefix]` (`prefix` variable set in terraform.tfvars) to connect to the Hetzner box
+6. Run (ssh'd): `echo -e "HTTP/1.1 200 OK\r\nContent-Length: 11\r\n\r\nhello world" | sudo nc -l -p 80` in the box to see "hello world" when accessing your domain from a browser
+7. Run (local): `scp server/* server/.env prefix:/home` to copy docker compose file to box
+8. Run (ssh'd): `cd /home && docker compose up -d` to spin up services
 
 ## Installing Terraform (on Debian-based Linux distros via apt)
 ```sh
-# Install Terraform
+# Install Terraform (confirm on https://www.terraform.io/ as these commands may be outdated)
 sudo apt update && sudo apt install -y gnupg software-properties-common
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | \
 sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null

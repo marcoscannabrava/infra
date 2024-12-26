@@ -1,0 +1,24 @@
+version: '3.8'
+
+# This file contains services that can be hosted on the Hetzner box
+services:
+  # https://nginx.org/ - reverse proxy
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:80"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+
+  # https://n8n.io/ - workflow automation
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "5678:5678"
+    env_file: .env
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:

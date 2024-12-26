@@ -18,4 +18,5 @@ terraform.tfvars
 *ed_25519*
 *id_rsa*
 
+.env
 *.json
