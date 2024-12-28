@@ -20,6 +20,8 @@ It spins up one Hetzner Cloud box running Ubuntu, installs Docker, configures DN
 6. Run (ssh'd): `echo -e "HTTP/1.1 200 OK\r\nContent-Length: 11\r\n\r\nhello world" | sudo nc -l -p 80` in the box to see "hello world" when accessing your domain from a browser
 
 # Suggested Usage
+The `server` folder contains an example deployment of [n8n](https://n8n.io/) served via [nginx](https://nginx.org/)
+
 1. Upload files via SSH to the box:
    1. `scp <files> <ssh_host>:/<directory>` (e.g. `scp server/* server/.env prefix:/home` to upload `server` folder contents)
 2. SSH into the box and run: `cd /<directory> && docker compose up -d` to start services
