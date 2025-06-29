@@ -10,15 +10,6 @@ hcloud_image = "ubuntu-22.04"
 # Type of instance to be used for all instances - https://docs.hetzner.cloud/#server-types
 hcloud_server = "cax11"
 
-# # Network to create for private communication
-# network_cidr = "10.0.0.0/8"
-
-# # Subnet to create for private communication. Must be part of the CIDR defined in `network_cidr`.
-# network_ip_range = "10.0.1.0/24"
-
-# # Zone to create the network in
-# network_zone = "us-west"
-
 # Cloudflare API token used to add DNS records
 cloudflare_token = ""
 

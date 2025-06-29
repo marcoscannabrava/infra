@@ -10,7 +10,7 @@ It spins up one Hetzner Cloud box running Ubuntu, installs Docker, configures DN
 
 # Quickstart
 1. Requirements:
-   1. [Install Terraform](#requirements-installation)
+   1. [Install Terraform](#requirements-terraform)
    2. Hetzner Account, and API Token
    3. Cloudflare Account, Zone, and API Token (a domain is required)
 2. Set up Environment Variables: `terraform.tfvars.example` --> `terraform.tfvars` (see `variables.tf` for a description of each)
@@ -27,16 +27,12 @@ The `server` folder contains an example deployment of [n8n](https://n8n.io/) ser
 2. SSH into the box and run: `cd /<directory> && docker compose up -d` to start services
 
 
-## Installing Terraform (on Debian-based Linux distros via apt)
+# Requirements: Terraform
+Installing Terraform (on Debian-based Linux distros via apt)
 ```sh
 # Install Terraform (confirm on https://www.terraform.io/ as these commands may be outdated)
-sudo apt update && sudo apt install -y gnupg software-properties-common
-wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
-
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-sudo tee /etc/apt/sources.list.d/hashicorp.list
+wget -qO - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 ```
 

@@ -15,19 +15,6 @@ resource "local_file" "ssh_public_key_openssh" {
   content  = tls_private_key.global_key.public_key_openssh
 }
 
-# # Create Hetzner Cloud Resources: Network, Subnet, VPS
-# resource "hcloud_network" "private" {
-#   name     = "${var.prefix}-private-network"
-#   ip_range = var.network_cidr
-# }
-
-# resource "hcloud_network_subnet" "private" {
-#   type         = "cloud"
-#   network_id   = hcloud_network.private.id
-#   network_zone = var.network_zone
-#   ip_range     = var.network_ip_range
-# }
-
 resource "hcloud_ssh_key" "server_ssh_key" {
   name       = "${var.prefix}-instance-ssh-key"
   public_key = tls_private_key.global_key.public_key_openssh
@@ -40,14 +27,6 @@ resource "hcloud_server" "server" {
   server_type = var.hcloud_server
   location    = var.hcloud_location
   ssh_keys    = [hcloud_ssh_key.server_ssh_key.id]
-
-  # network {
-  #   network_id = hcloud_network.private.id
-  # }
-
-  # depends_on = [
-  #   hcloud_network_subnet.private
-  # ]
 
   provisioner "remote-exec" {
     inline = [
