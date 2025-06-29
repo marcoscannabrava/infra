@@ -70,7 +70,7 @@ resource "cloudflare_record" "root" {
 
 resource "cloudflare_record" "www" {
   zone_id         = var.cloudflare_zone_id
-  name            = "www.${var.domain}"
+  name            = "www"
   value           = hcloud_server.server.ipv4_address
   type            = "A"
   ttl             = 1

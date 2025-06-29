@@ -5,10 +5,10 @@ hcloud_token = ""
 hcloud_location = "fsn1"
 
 # Image to be used for all instances - https://docs.hetzner.cloud/#images
-hcloud_image = "ubuntu-22.04"
+hcloud_image = "ubuntu-24.04"
 
 # Type of instance to be used for all instances - https://docs.hetzner.cloud/#server-types
-hcloud_server = "cax11"
+hcloud_server = "cx22"
 
 # Cloudflare API token used to add DNS records
 cloudflare_token = ""
