@@ -1,15 +1,18 @@
 # This file contains services that can be hosted on the Hetzner box
 services:
-  # https://nginx.org/ - reverse proxy
-  nginx:
-    image: nginx:latest
+  # https://caddyserver.com/ - web server and reverse proxy
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
     ports:
       - "80:80"
-      - "443:80"
+      - "443:443"
+      - "443:443/udp"
     volumes:
-      - ./default.conf.template:/etc/nginx/templates/default.conf.template
-    env_file:
-      - .env
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./www:/srv/www
+      - caddy-data:/data
+      - caddy-config:/config
 
   # https://n8n.io/ - workflow automation
   n8n:
@@ -21,4 +24,6 @@ services:
       - n8n_data:/home/node/.n8n
 
 volumes:
+  caddy-data:
+  caddy-config:
   n8n_data:

@@ -1,0 +1,8 @@
+m4s.dev {
+  root * /srv/www
+  file_server
+}
+
+n8n.m4s.dev {
+  reverse_proxy n8n:5678
+}
