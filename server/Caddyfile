@@ -6,3 +6,7 @@ m4s.dev {
 n8n.m4s.dev {
   reverse_proxy n8n:5678
 }
+
+notes.m4s.dev {
+  reverse_proxy affine:3010
+}

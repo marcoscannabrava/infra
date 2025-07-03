@@ -1,4 +1,6 @@
 # This file contains services that can be hosted on the Hetzner box
+include:
+  - affine/docker-compose.yml
 services:
   # https://caddyserver.com/ - web server and reverse proxy
   caddy:
